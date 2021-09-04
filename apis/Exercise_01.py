@@ -1,4 +1,4 @@
-'''
+"""
 Using the requests package, make a GET request to the api behind this endpoint:
 
     http://demo.codingnomads.co:8080/tasks_api/users
@@ -11,4 +11,8 @@ Print out:
 
 
 
-'''
+"""
+import requests
+
+response = requests.get("http://demo.codingnomads.co:8080/tasks_api/users")
+print(response.status_code)
