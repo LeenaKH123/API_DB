@@ -16,3 +16,6 @@ import requests
 
 response = requests.get("http://demo.codingnomads.co:8080/tasks_api/users")
 print(response.status_code)
+print(response.encoding)
+print(response.content)
+# print(response.json())
