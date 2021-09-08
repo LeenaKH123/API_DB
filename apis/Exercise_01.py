@@ -8,12 +8,8 @@ Print out:
     - the status code
     - the encoding of the response
     - the text of the response body
-
-
-
 """
 import requests
-
 response = requests.get("http://demo.codingnomads.co:8080/tasks_api/users")
 print(response.status_code)
 print(response.encoding)
