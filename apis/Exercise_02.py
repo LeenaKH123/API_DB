@@ -5,12 +5,16 @@ the list to the console.
 """
 import requests
 import json
-import re
-regex = "^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$"
+# import re
+# regex = "^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$"
+emails = []
 response = requests.get("http://demo.codingnomads.co:8080/tasks_api/users")
 output = (response.json())
 output1 = output["data"]
 # print(type(output))
 # print(output1)
-for email in output1:
-    print(output1('email'))
+for item in output1:
+    emails.append(item['email'])
+
+print(emails)
+    
