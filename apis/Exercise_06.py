@@ -27,7 +27,30 @@ if selection == '1':
     NewUser = {'first_name': firstName, 'last_name': lastName, 'email': email}
     x = requests.post(url, json= NewUser)
 
-# elif selection == '2':
+elif selection == '2':
+    email = input ("Please type your email to show all your tasks ") 
+    response = requests.get(url)
+    output = (response.json())
+    outputData = output["data"]
+   
+    for item in outputData:
+        if item['email'] == email:
+            print(item)
+        else:
+            print("Your email doesn't exist")
+
+elif selection == '3':
+    print("I dont know what to do here")
+
+elif selection == '4':
+    print("I dont know what to do here")
+
+
+
+
+
+    
+
 
 # elif selection == '3':
 
