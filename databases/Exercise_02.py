@@ -40,10 +40,9 @@ query2 = sqlalchemy.select(
 ).select_from(join_statement)
 
 result_proxy = connection.execute(query)
-result_set = result_proxy.fetchall()
-print(result_set)
+actor_firstName = result_proxy.fetchall()
+print(actor_firstName)
 
 result_proxy2 = connection.execute(query2)
-
 result_set2 = result_proxy.fetchall()
-print(result_set)
+print(result_set2)
