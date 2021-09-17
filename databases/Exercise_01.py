@@ -7,8 +7,7 @@ Using the provided database schema, write the necessary code to print informatio
 """
 import sqlalchemy
 
-
-engine = sqlalchemy.create_engine("mysql+pymysql://root:MyNewPass@localhost/sakila")
+engine = sqlalchemy.create_engine("mysql+pymysql://leena:leena@localhost/sakila")
 connection = engine.connect()
 metadata = sqlalchemy.MetaData()
 actor = sqlalchemy.Table("actor", metadata, autoload=True, autoload_with=engine)

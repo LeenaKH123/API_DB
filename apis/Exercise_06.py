@@ -42,18 +42,49 @@ elif selection == "2":
         #     print("Your ID doesn't exist")
 
 elif selection == "3":
-    print("I dont know what to do here")
+    userid = input("Please type your userid to show all your completed tasks ")
+    response = requests.get(url + "/" + userid + "/" + "tasks?complete=true")
+    output = response.json()
+    outputData = output["data"]
+
+    for item in outputData:
+        print(item)
+        if item["userId"] == userid:
+            print(item)
 
 elif selection == "4":
-    print("I dont know what to do here")
+    userid = input("Please type your userid to show all your incompleted tasks ")
+    response = requests.get(url + "/" + userid + "/" + "tasks?complete=false")
+    output = response.json()
+    outputData = output["data"]
 
+    for item in outputData:
+        print(item)
+        if item["userId"] == userid:
+            print(item)
 
-# elif selection == '3':
+elif selection == "5":
+    print("We will create a new task for you ")
+    description = input("Type your task description ")
+    taskName = input("Type your Name ")
+    taskuserid = input("Type a task user ID ")
+    NewUser = {"description": description, "name": taskName, "userId": taskuserid}
+    taskurl = "http://demo.codingnomads.co:8080/tasks_api/tasks"
+    x = requests.post(taskurl, json=NewUser)
+    print(x.status_code)
 
-# elif selection == '4':
+elif selection == "6":
+    print("We will update a task for you ")
+    taskurl = "http://demo.codingnomads.co:8080/tasks_api/tasks"
+    description = input("Type your task description ")
+    taskName = input("Type your Name ")
+    taskuserid = input("Type a task user ID ")
+    NewUser = {"description": description, "name": taskName, "userId": taskuserid}
+    x = requests.post(taskurl, json=NewUser)
+    print(x.status_code)
 
-# elif selection == '5':
-
-# elif selection == '6':
-
-# elif selection == '7':
+elif selection == "7":
+    idDelete = input("Please type the ID for the task you want to delete ")
+    taskurl = "http://demo.codingnomads.co:8080/tasks_api/tasks"
+    response = requests.delete(taskurl + "/" + idDelete)
+    print(response.status_code)
