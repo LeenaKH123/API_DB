@@ -1,7 +1,5 @@
 '''
-
 Create an application that interfaces with the user via the CLI - prompt the user with a menu such as:
-
 Please select from the following options (enter the number of the action you'd like to take):
 1) Create a new account (POST)
 2) View all your tasks (GET)
@@ -10,10 +8,7 @@ Please select from the following options (enter the number of the action you'd l
 5) Create a new task (POST)
 6) Update an existing task (PATCH/PUT)
 7) Delete a task (DELETE)
-
 It is your responsibility to build out the application to handle all menu options above.
-
-
 '''
 import requests
 import json
@@ -28,13 +23,12 @@ if selection == '1':
     x = requests.post(url, json= NewUser)
 
 elif selection == '2':
-    email = input ("Please type your email to show all your tasks ") 
-    response = requests.get(url)
+    userID = input ("Please type your ID to show all your tasks ") 
+    response = requests.get(url+'/'+userID+'tasks')
     output = (response.json())
-    outputData = output["data"]
-   
+    outputData = output["data"]   
     for item in outputData:
-        if item['email'] == email:
+        if item['userId'] == userID:
             print(item)
         else:
             print("Your email doesn't exist")
