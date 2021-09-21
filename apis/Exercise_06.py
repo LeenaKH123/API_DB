@@ -28,21 +28,6 @@ selection = input(
 )
 if selection == "1":
     print("We will create a new account for you ")
-<<<<<<< HEAD
-    firstName = input ("Type your First Name ")
-    lastName = input ("Type your Last Name ")
-    email = input ("Type in your email ")
-    NewUser = {'first_name': firstName, 'last_name': lastName, 'email': email}
-    x = requests.post(url, json= NewUser)
-
-elif selection == '2':
-    userID = input ("Please type your ID to show all your tasks ") 
-    response = requests.get(url+'/'+userID+'tasks')
-    output = (response.json())
-    outputData = output["data"]   
-    for item in outputData:
-        if item['userId'] == userID:
-=======
     firstName = input("Type your First Name ")
     lastName = input("Type your Last Name ")
     email = input("Type in your email ")
@@ -58,7 +43,6 @@ elif selection == "2":
     for item in outputData:
         print(item)
         if item["userId"] == userid:
->>>>>>> 7856ef653394a526e65c67837963d4168e968336
             print(item)
         # else:
         #     print("Your ID doesn't exist")

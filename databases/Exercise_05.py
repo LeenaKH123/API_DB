@@ -12,3 +12,27 @@ NOTE: If you run this several times you will be saving the same information in t
 To prevent this, you should add a check to see if the record already exists before inserting it.
 
 '''
+import requests
+import json
+
+# getting all the users
+url = "http://demo.codingnomads.co:8080/tasks_api/users"
+response = requests.get(url)
+output = response.json()
+outputData = output["data"]
+# print(outputData) -- it works
+
+# getting all the users ID's
+for item in outputData:
+    userid = item["id"]
+#    print(userid) -- it works
+
+# getting all tasks
+urlTask = 
+    
+
+
+
+
+
+
