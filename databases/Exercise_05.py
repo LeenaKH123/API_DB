@@ -23,16 +23,22 @@ outputData = output["data"]
 # print(outputData) -- it works
 
 # getting all the users ID's
+userid = []
 for item in outputData:
-    userid = item["id"]
-#    print(userid) -- it works
+    userid.append(item["id"])
+#print(userid) 
 
 # getting all tasks
-urlTask = 
-    
-
-
-
-
-
-
+users = []
+tasks = []
+for id in userid:
+    responsetask = requests.get(url + "/" + str(id) + "/tasks")
+    outputtasks = responsetask.json()
+    outputtaskdata = outputtasks["data"]
+    for item2 in outputtaskdata:
+        users.append(item2["name"])
+        tasks.append(item2["description"])
+    # print(outputtaskdata)
+print("users", users)
+print("tasks", tasks)
+#urlTask = 
