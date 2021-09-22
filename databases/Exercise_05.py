@@ -14,6 +14,14 @@ To prevent this, you should add a check to see if the record already exists befo
 '''
 import requests
 import json
+import sqlalchemy
+
+engine = sqlalchemy.create_engine("mysql+pymysql://leena:leena@localhost/sakila")
+connection = engine.connect()
+metadata = sqlalchemy.MetaData()
+mycursor = connection.cursor()
+
+mycursor.execute("CREATE TABLE customers (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), description VARCHAR(255), userID VARCHAR(255))")
 
 # getting all the users
 url = "http://demo.codingnomads.co:8080/tasks_api/users"
@@ -41,4 +49,5 @@ for id in userid:
     # print(outputtaskdata)
 print("users", users)
 print("tasks", tasks)
+print("id's", userid)
 #urlTask = 
