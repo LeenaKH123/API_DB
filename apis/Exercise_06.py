@@ -94,3 +94,17 @@ elif selection == "7":
     taskurl = "http://demo.codingnomads.co:8080/tasks_api/tasks"
     response = requests.delete(taskurl + "/" + idDelete)
     print(response.status_code)
+
+
+#     A few thoughts:
+# I'd recommend splitting off the work into individual functions.
+# That way you have a nice re-usable codebase with simple functions you can call to invoke the 
+# behavior for each selection
+# In the selection == "2" option - you do not need to include ?complete=-1  
+# - the default behavior will return all tasks complete or incomplete.
+#  If you want only completed tasks then you'd add ?complete=true 
+#  - for instance http://demo.codingnomads.co:8080/tasks_api/users/3/tasks?complete=true or inversely,
+#   http://demo.codingnomads.co:8080/tasks_api/users/3/tasks?complete=false
+# in various sections you're checking if item["userId"] == userid - 
+# I'm not sure this is necessary as you've specifically queries the REST API using 
+# that specific userId which will only return elements and data for that user - so that check seems redundant
