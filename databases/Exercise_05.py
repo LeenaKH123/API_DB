@@ -8,11 +8,14 @@
 import requests
 import json
 import sqlalchemy
-engine = sqlalchemy.create_engine("mysql+pymysql://leena:leena@localhost/CustomersTasks")
+
+engine = sqlalchemy.create_engine(
+    "mysql+pymysql://leena:leena@localhost/CustomersTasks"
+)
 connection = engine.connect()
 metadata = sqlalchemy.MetaData()
-newTable = sqlalchemy.Table('UsersTasks', metadata, autoload=True, autoload_with=engine)
-# getting all the userscd 
+newTable = sqlalchemy.Table("UsersTasks", metadata, autoload=True, autoload_with=engine)
+# getting all the userscd
 url = "http://demo.codingnomads.co:8080/tasks_api/users"
 response = requests.get(url)
 output = response.json()
@@ -22,7 +25,7 @@ outputData = output["data"]
 userid = []
 for item in outputData:
     userid.append(item["id"])
-#print(userid)clear
+# print(userid)clear
 # getting all tasks
 users = []
 tasks = []
@@ -37,9 +40,11 @@ for id in userid:
 # print("users", users)  -- 59
 # print("tasks", tasks)  -- 59
 # print("id's", userid)  -- 200's
-#urlTask = 
+# urlTask =
 # insert list elements in the database
 for index in range(len(users)):
-    query = sqlalchemy.insert(newTable).values(Name=users[index], Desctiption=tasks[index], Identifier=userid[index], active=True)
+    query = sqlalchemy.insert(newTable).values(
+        Name=users[index], Desctiption=tasks[index], Identifier=userid[index]
+    )
     result_proxy = connection.execute(query)
 print("Database successfully updated")
