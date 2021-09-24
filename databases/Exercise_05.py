@@ -43,8 +43,9 @@ for id in userid:
 # urlTask =
 # insert list elements in the database
 for index in range(len(users)):
+
     query = sqlalchemy.insert(newTable).values(
         Name=users[index], Desctiption=tasks[index], Identifier=userid[index]
     )
     result_proxy = connection.execute(query)
-print("Database successfully updated")
+print("The database was successfully updated")
